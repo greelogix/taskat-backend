@@ -43,10 +43,10 @@ class UpdateForm extends Form
     public function save()
     {
         $this->validate();
-
         $this->processImage();
 
         $this->service->update($this->except(['service', 'newImage']));
+
     }
 
     public function processImage()

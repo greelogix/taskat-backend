@@ -5,10 +5,9 @@ namespace App\Livewire\Dashboard;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Collection;
-use App\Livewire\Dashboard\Services\Forms\CreateForm;
-use App\Models\Service;
+use App\Livewire\Dashboard\Influencers\Forms\CreateForm;
 
-class ServiceCreate extends Component
+class InfluencerCreate extends Component
 {
     use WithFileUploads;
 
@@ -20,17 +19,17 @@ class ServiceCreate extends Component
 
     public function save()
     {
-        $this->authorize('create', Service::class);
+        $this->authorize('create', Influencer::class);
 
         $this->validate();
 
-        $service = $this->form->save();
+        $influencer = $this->form->save();
 
-        return redirect()->route('dashboard.services.edit', $service);
+        return redirect()->route('dashboard.influencers.edit', $influencer);
     }
 
     public function render()
     {
-        return view('livewire.dashboard.services.create', []);
+        return view('livewire.dashboard.influencers.create', []);
     }
 }

@@ -5,8 +5,7 @@
         >
         <x-ui.breadcrumbs.separator />
         <x-ui.breadcrumbs.link active
-            >{{ __('crud.iinfluencers.collectionTitle')
-            }}</x-ui.breadcrumbs.link
+            >{{ __('crud.influencers.collectionTitle') }}</x-ui.breadcrumbs.link
         >
     </x-ui.breadcrumbs>
 
@@ -14,12 +13,12 @@
         <x-ui.input
             wire:model.live="search"
             type="text"
-            placeholder="Search {{ __('crud.iinfluencers.collectionTitle') }}..."
+            placeholder="Search {{ __('crud.influencers.collectionTitle') }}..."
         />
 
-        @can('create', App\Models\Iinfluencer::class)
-        <a wire:navigate href="{{ route('dashboard.iinfluencers.create') }}">
-            <x-ui.button>New</x-ui.button>
+        @can('create', App\Models\Influencer::class)
+        <a wire:navigate href="{{ route('dashboard.influencers.create') }}">
+            <x-ui.button style="background: #033F9D !important;">Add</x-ui.button>
         </a>
         @endcan
     </div>
@@ -40,7 +39,7 @@
 
             <x-ui.button.danger
                 class="ml-3"
-                wire:click="delete({{ $deletingIinfluencer }})"
+                wire:click="delete({{ $deletingInfluencer }})"
                 wire:loading.attr="disabled"
             >
                 {{ __('Delete') }}
@@ -53,67 +52,67 @@
         <x-ui.table>
             <x-slot name="head">
                 <x-ui.table.header for-crud wire:click="sortBy('name')"
-                    >{{ __('crud.iinfluencers.inputs.name.label')
+                    >{{ __('crud.influencers.inputs.name.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('bio')"
-                    >{{ __('crud.iinfluencers.inputs.bio.label')
-                    }}</x-ui.table.header
-                >
-                <x-ui.table.header for-crud wire:click="sortBy('address')"
-                    >{{ __('crud.iinfluencers.inputs.address.label')
+                    >{{ __('crud.influencers.inputs.bio.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('lat')"
-                    >{{ __('crud.iinfluencers.inputs.lat.label')
+                    >{{ __('crud.influencers.inputs.lat.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('long')"
-                    >{{ __('crud.iinfluencers.inputs.long.label')
+                    >{{ __('crud.influencers.inputs.long.label')
+                    }}</x-ui.table.header
+                >
+                <x-ui.table.header for-crud wire:click="sortBy('address')"
+                    >{{ __('crud.influencers.inputs.address.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('image')"
-                    >{{ __('crud.iinfluencers.inputs.image.label')
+                    >{{ __('crud.influencers.inputs.image.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.action-header>Actions</x-ui.table.action-header>
             </x-slot>
 
             <x-slot name="body">
-                @forelse ($iinfluencers as $iinfluencer)
+                @forelse ($influencers as $influencer)
                 <x-ui.table.row wire:loading.class.delay="opacity-75">
                     <x-ui.table.column for-crud
-                        >{{ $iinfluencer->name }}</x-ui.table.column
+                        >{{ $influencer->name }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
-                        >{{ $iinfluencer->bio }}</x-ui.table.column
+                        >{{ $influencer->bio }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
-                        >{{ $iinfluencer->address }}</x-ui.table.column
+                        >{{ $influencer->lat }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
-                        >{{ $iinfluencer->lat }}</x-ui.table.column
+                        >{{ $influencer->long }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
-                        >{{ $iinfluencer->long }}</x-ui.table.column
+                        >{{ $influencer->address }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud>
                         <x-ui.table.image
-                            url="{{ asset('storage/' . $iinfluencer->image) }}"
-                            alt="{{ $iinfluencer->image }}"
+                            url="{{ asset('storage/' . $influencer->image) }}"
+                            alt="{{ $influencer->image }}"
                         />
                     </x-ui.table.column>
                     <x-ui.table.action-column>
-                        @can('update', $iinfluencer)
+                        @can('update', $influencer)
                         <x-ui.action
                             wire:navigate
-                            href="{{ route('dashboard.iinfluencers.edit', $iinfluencer) }}"
-                            >Edit</x-ui.action
+                            href="{{ route('dashboard.influencers.edit', $influencer) }}"
+                            ><i class="fa-sharp fa-solid fa-pen"></i></x-ui.action
                         >
-                        @endcan @can('delete', $iinfluencer)
+                        @endcan @can('delete', $influencer)
                         <x-ui.action.danger
-                            wire:click="confirmDeletion({{ $iinfluencer->id }})"
-                            >Delete</x-ui.action.danger
+                            wire:click="confirmDeletion({{ $influencer->id }})"
+                            ><i class="fa-sharp fa-solid fa-trash"></i></x-ui.action.danger
                         >
                         @endcan
                     </x-ui.table.action-column>
@@ -121,13 +120,13 @@
                 @empty
                 <x-ui.table.row>
                     <x-ui.table.column colspan="7"
-                        >No {{ __('crud.iinfluencers.collectionTitle') }} found.</x-ui.table.column
+                        >No {{ __('crud.influencers.collectionTitle') }} found.</x-ui.table.column
                     >
                 </x-ui.table.row>
                 @endforelse
             </x-slot>
         </x-ui.table>
 
-        <div class="mt-2">{{ $iinfluencers->links() }}</div>
+        <div class="mt-2">{{ $influencers->links() }}</div>
     </x-ui.container.table>
 </div>

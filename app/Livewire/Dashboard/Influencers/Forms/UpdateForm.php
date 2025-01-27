@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Livewire\Dashboard\Iinfluencers\Forms;
+namespace App\Livewire\Dashboard\Influencers\Forms;
 
 use Livewire\Form;
-use App\Models\Iinfluencer;
+use App\Models\Influencer;
 use Illuminate\Validation\Rule;
 
 class UpdateForm extends Form
 {
-    public ?Iinfluencer $iinfluencer;
+    public ?Influencer $influencer;
 
     public $name = '';
 
     public $bio = '';
 
-    public $address = '';
-
     public $lat = '';
 
     public $long = '';
+
+    public $address = '';
 
     public $image = '';
 
@@ -29,23 +29,23 @@ class UpdateForm extends Form
         return [
             'name' => ['nullable', 'string'],
             'bio' => ['nullable', 'string'],
-            'address' => ['nullable', 'string'],
             'lat' => ['nullable', 'string'],
             'long' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:1024'],
         ];
     }
 
-    public function setIinfluencer(Iinfluencer $iinfluencer)
+    public function setInfluencer(Influencer $influencer)
     {
-        $this->iinfluencer = $iinfluencer;
+        $this->influencer = $influencer;
 
-        $this->name = $iinfluencer->name;
-        $this->bio = $iinfluencer->bio;
-        $this->address = $iinfluencer->address;
-        $this->lat = $iinfluencer->lat;
-        $this->long = $iinfluencer->long;
-        $this->image = $iinfluencer->image;
+        $this->name = $influencer->name;
+        $this->bio = $influencer->bio;
+        $this->lat = $influencer->lat;
+        $this->long = $influencer->long;
+        $this->address = $influencer->address;
+        $this->image = $influencer->image;
     }
 
     public function save()
@@ -54,7 +54,7 @@ class UpdateForm extends Form
 
         $this->processImage();
 
-        $this->iinfluencer->update($this->except(['iinfluencer', 'newImage']));
+        $this->influencer->update($this->except(['influencer', 'newImage']));
     }
 
     public function processImage()
@@ -63,8 +63,8 @@ class UpdateForm extends Form
             return;
         }
 
-        $this->iinfluencer->image = $this->newImage->store(
-            'iinfluencers',
+        $this->influencer->image = $this->newImage->store(
+            'influencers',
             'public'
         );
     }

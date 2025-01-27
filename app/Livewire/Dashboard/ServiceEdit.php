@@ -5,10 +5,14 @@ namespace App\Livewire\Dashboard;
 use Livewire\Component;
 use App\Models\Service;
 use Illuminate\Support\Collection;
+use Livewire\WithFileUploads;
 use App\Livewire\Dashboard\Services\Forms\UpdateForm;
 
 class ServiceEdit extends Component
 {
+   
+    use WithFileUploads;
+
     public ?Service $service = null;
 
     public UpdateForm $form;
@@ -24,8 +28,8 @@ class ServiceEdit extends Component
 
     public function save()
     {
+       
         $this->authorize('update', $this->service);
-
         $this->validate();
 
         $this->form->save();

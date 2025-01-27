@@ -130,7 +130,7 @@
                     <!-- Other buttons here -->
                 </div>
                 <div>
-                    <x-ui.button type="submit">Save</x-ui.button>
+                    <x-ui.button type="submit" style="background: #033F9D !important;">Submit</x-ui.button>
                 </div>
             </div>
         </form>

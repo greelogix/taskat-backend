@@ -59,16 +59,16 @@
                     >{{ __('crud.influencers.inputs.bio.label')
                     }}</x-ui.table.header
                 >
-                <x-ui.table.header for-crud wire:click="sortBy('address')"
-                    >{{ __('crud.influencers.inputs.address.label')
-                    }}</x-ui.table.header
-                >
                 <x-ui.table.header for-crud wire:click="sortBy('lat')"
                     >{{ __('crud.influencers.inputs.lat.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('long')"
                     >{{ __('crud.influencers.inputs.long.label')
+                    }}</x-ui.table.header
+                >
+                <x-ui.table.header for-crud wire:click="sortBy('address')"
+                    >{{ __('crud.influencers.inputs.address.label')
                     }}</x-ui.table.header
                 >
                 <x-ui.table.header for-crud wire:click="sortBy('image')"
@@ -88,13 +88,13 @@
                         >{{ $influencer->bio }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
-                        >{{ $influencer->address }}</x-ui.table.column
-                    >
-                    <x-ui.table.column for-crud
                         >{{ $influencer->lat }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud
                         >{{ $influencer->long }}</x-ui.table.column
+                    >
+                    <x-ui.table.column for-crud
+                        >{{ $influencer->address }}</x-ui.table.column
                     >
                     <x-ui.table.column for-crud>
                         <x-ui.table.image

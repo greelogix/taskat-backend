@@ -25,9 +25,9 @@ class InfluencerFactory extends Factory
         return [
             'name' => fake()->name(),
             'bio' => fake()->sentence(15),
-            'address' => fake()->address(),
             'lat' => fake()->word(),
             'long' => fake()->word(),
+            'address' => fake()->address(),
             'image' => fake()->word(),
         ];
     }

@@ -92,19 +92,19 @@ Route::prefix('/dashboard')
         )->name('content-categories.edit');
 
         Route::get(
-            '/iinfluencers',
-            App\Livewire\Dashboard\IinfluencerIndex::class
-        )->name('iinfluencers.index');
+            '/influencers',
+            App\Livewire\Dashboard\InfluencerIndex::class
+        )->name('influencers.index');
 
         Route::get(
-            '/iinfluencers/create',
-            App\Livewire\Dashboard\IinfluencerCreate::class
-        )->name('iinfluencers.create');
+            '/influencers/create',
+            App\Livewire\Dashboard\InfluencerCreate::class
+        )->name('influencers.create');
 
         Route::get(
-            '/iinfluencers/{iinfluencer}',
-            App\Livewire\Dashboard\IinfluencerEdit::class
-        )->name('iinfluencers.edit');
+            '/influencers/{influencer}',
+            App\Livewire\Dashboard\InfluencerEdit::class
+        )->name('influencers.edit');
     });
 
 // API

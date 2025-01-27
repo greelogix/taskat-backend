@@ -53,21 +53,6 @@
                 </div>
 
                 <div class="w-full">
-                    <x-ui.label for="address"
-                        >{{ __('crud.influencers.inputs.address.label')
-                        }}</x-ui.label
-                    >
-                    <x-ui.input.text
-                        class="w-full"
-                        wire:model="form.address"
-                        name="address"
-                        id="address"
-                        placeholder="{{ __('crud.influencers.inputs.address.placeholder') }}"
-                    />
-                    <x-ui.input.error for="form.address" />
-                </div>
-
-                <div class="w-full">
                     <x-ui.label for="lat"
                         >{{ __('crud.influencers.inputs.lat.label')
                         }}</x-ui.label
@@ -95,6 +80,21 @@
                         placeholder="{{ __('crud.influencers.inputs.long.placeholder') }}"
                     />
                     <x-ui.input.error for="form.long" />
+                </div>
+
+                <div class="w-full">
+                    <x-ui.label for="address"
+                        >{{ __('crud.influencers.inputs.address.label')
+                        }}</x-ui.label
+                    >
+                    <x-ui.input.text
+                        class="w-full"
+                        wire:model="form.address"
+                        name="address"
+                        id="address"
+                        placeholder="{{ __('crud.influencers.inputs.address.placeholder') }}"
+                    />
+                    <x-ui.input.error for="form.address" />
                 </div>
 
                 <div class="w-full">

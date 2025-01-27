@@ -14,11 +14,11 @@ class UpdateForm extends Form
 
     public $bio = '';
 
-    public $address = '';
-
     public $lat = '';
 
     public $long = '';
+
+    public $address = '';
 
     public $image = '';
 
@@ -29,9 +29,9 @@ class UpdateForm extends Form
         return [
             'name' => ['nullable', 'string'],
             'bio' => ['nullable', 'string'],
-            'address' => ['nullable', 'string'],
             'lat' => ['nullable', 'string'],
             'long' => ['nullable', 'string'],
+            'address' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:1024'],
         ];
     }
@@ -42,9 +42,9 @@ class UpdateForm extends Form
 
         $this->name = $influencer->name;
         $this->bio = $influencer->bio;
-        $this->address = $influencer->address;
         $this->lat = $influencer->lat;
         $this->long = $influencer->long;
+        $this->address = $influencer->address;
         $this->image = $influencer->image;
     }
 

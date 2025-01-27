@@ -4,21 +4,18 @@
             >Dashboard</x-ui.breadcrumbs.link
         >
         <x-ui.breadcrumbs.separator />
-        <x-ui.breadcrumbs.link
-            href="{{ route('dashboard.iinfluencers.index') }}"
-            >{{ __('crud.iinfluencers.collectionTitle')
-            }}</x-ui.breadcrumbs.link
+        <x-ui.breadcrumbs.link href="{{ route('dashboard.influencers.index') }}"
+            >{{ __('crud.influencers.collectionTitle') }}</x-ui.breadcrumbs.link
         >
         <x-ui.breadcrumbs.separator />
         <x-ui.breadcrumbs.link active
-            >Edit {{ __('crud.iinfluencers.itemTitle') }}</x-ui.breadcrumbs.link
+            >Create {{ __('crud.influencers.itemTitle')
+            }}</x-ui.breadcrumbs.link
         >
     </x-ui.breadcrumbs>
 
-    <x-ui.toast on="saved"> Iinfluencer saved successfully. </x-ui.toast>
-
     <div class="w-full text-gray-500 text-lg font-semibold py-4 uppercase">
-        <h1>Edit {{ __('crud.iinfluencers.itemTitle') }}</h1>
+        <h1>Create {{ __('crud.influencers.itemTitle') }}</h1>
     </div>
 
     <div class="overflow-hidden border rounded-lg bg-white">
@@ -26,7 +23,7 @@
             <div class="p-6 space-y-3">
                 <div class="w-full">
                     <x-ui.label for="name"
-                        >{{ __('crud.iinfluencers.inputs.name.label')
+                        >{{ __('crud.influencers.inputs.name.label')
                         }}</x-ui.label
                     >
                     <x-ui.input.text
@@ -34,14 +31,14 @@
                         wire:model="form.name"
                         name="name"
                         id="name"
-                        placeholder="{{ __('crud.iinfluencers.inputs.name.placeholder') }}"
+                        placeholder="{{ __('crud.influencers.inputs.name.placeholder') }}"
                     />
                     <x-ui.input.error for="form.name" />
                 </div>
 
                 <div class="w-full">
                     <x-ui.label for="bio"
-                        >{{ __('crud.iinfluencers.inputs.bio.label')
+                        >{{ __('crud.influencers.inputs.bio.label')
                         }}</x-ui.label
                     >
                     <x-ui.input.textarea
@@ -50,29 +47,14 @@
                         rows="6"
                         name="bio"
                         id="bio"
-                        placeholder="{{ __('crud.iinfluencers.inputs.bio.placeholder') }}"
+                        placeholder="{{ __('crud.influencers.inputs.bio.placeholder') }}"
                     />
                     <x-ui.input.error for="form.bio" />
                 </div>
 
                 <div class="w-full">
-                    <x-ui.label for="address"
-                        >{{ __('crud.iinfluencers.inputs.address.label')
-                        }}</x-ui.label
-                    >
-                    <x-ui.input.text
-                        class="w-full"
-                        wire:model="form.address"
-                        name="address"
-                        id="address"
-                        placeholder="{{ __('crud.iinfluencers.inputs.address.placeholder') }}"
-                    />
-                    <x-ui.input.error for="form.address" />
-                </div>
-
-                <div class="w-full">
                     <x-ui.label for="lat"
-                        >{{ __('crud.iinfluencers.inputs.lat.label')
+                        >{{ __('crud.influencers.inputs.lat.label')
                         }}</x-ui.label
                     >
                     <x-ui.input.text
@@ -80,14 +62,14 @@
                         wire:model="form.lat"
                         name="lat"
                         id="lat"
-                        placeholder="{{ __('crud.iinfluencers.inputs.lat.placeholder') }}"
+                        placeholder="{{ __('crud.influencers.inputs.lat.placeholder') }}"
                     />
                     <x-ui.input.error for="form.lat" />
                 </div>
 
                 <div class="w-full">
                     <x-ui.label for="long"
-                        >{{ __('crud.iinfluencers.inputs.long.label')
+                        >{{ __('crud.influencers.inputs.long.label')
                         }}</x-ui.label
                     >
                     <x-ui.input.text
@@ -95,14 +77,29 @@
                         wire:model="form.long"
                         name="long"
                         id="long"
-                        placeholder="{{ __('crud.iinfluencers.inputs.long.placeholder') }}"
+                        placeholder="{{ __('crud.influencers.inputs.long.placeholder') }}"
                     />
                     <x-ui.input.error for="form.long" />
                 </div>
 
                 <div class="w-full">
+                    <x-ui.label for="address"
+                        >{{ __('crud.influencers.inputs.address.label')
+                        }}</x-ui.label
+                    >
+                    <x-ui.input.text
+                        class="w-full"
+                        wire:model="form.address"
+                        name="address"
+                        id="address"
+                        placeholder="{{ __('crud.influencers.inputs.address.placeholder') }}"
+                    />
+                    <x-ui.input.error for="form.address" />
+                </div>
+
+                <div class="w-full">
                     <x-ui.label for="image"
-                        >{{ __('crud.iinfluencers.inputs.image.label')
+                        >{{ __('crud.influencers.inputs.image.label')
                         }}</x-ui.label
                     >
                     <x-ui.input.image
@@ -122,7 +119,7 @@
                     <!-- Other buttons here -->
                 </div>
                 <div>
-                    <x-ui.button type="submit">Save</x-ui.button>
+                    <x-ui.button type="submit" style="background: #033F9D !important;">Submit</x-ui.button>
                 </div>
             </div>
         </form>

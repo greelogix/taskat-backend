@@ -133,14 +133,6 @@ new class extends Component
                                 >
                                     {{ __('navigation.content_categories') }}
                                 </x-dropdown-link>
-                                @endcan @can('view-any',
-                                App\Models\Iinfluencer::class)
-                                <x-dropdown-link
-                                    wire:navigate
-                                    href="{{ route('dashboard.iinfluencers.index') }}"
-                                >
-                                    {{ __('navigation.iinfluencers') }}
-                                </x-dropdown-link>
                                 @endcan
                             </x-slot>
                         </x-dropdown>
@@ -263,13 +255,6 @@ new class extends Component
                 :active="request()->routeIs('dashboard.content-categories.index')"
             >
                 {{ __('navigation.content_categories') }}
-            </x-responsive-nav-link>
-            @endcan @can('view-any', App\Models\Iinfluencer::class)
-            <x-responsive-nav-link
-                href="{{ route('dashboard.iinfluencers.index') }}"
-                :active="request()->routeIs('dashboard.iinfluencers.index')"
-            >
-                {{ __('navigation.iinfluencers') }}
             </x-responsive-nav-link>
             @endcan
         </div>

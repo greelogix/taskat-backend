@@ -1,0 +1,46 @@
+@media (max-width: 767px) {
+    .hide-on-small {
+      display: none;
+     }
+     .logo-res{
+        padding-left: 20px !important;
+     }
+     .content-res {
+        margin-left: 0px !important;
+       }
+    }
+    
+    @media (max-width: 1440px) {
+    .content-res {
+      margin-left: 250px;
+     }
+    }
+    
+    @media (max-width: 425px) {
+    .content-res {
+      margin-left: 0px;
+     }
+    }
+    @media (max-width: 430px) {
+      .content-res {
+        margin-left: 0px;
+      }
+    }
+    
+    @media (max-width: 540px) {
+      .content-res {
+        margin-left: 0px;
+      }
+    }
+    
+    .active {
+        font-weight: bold;
+        color: #007bff; 
+    }
+    
+
+
+  
+
+    
+    

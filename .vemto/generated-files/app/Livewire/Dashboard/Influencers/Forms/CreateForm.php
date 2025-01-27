@@ -15,15 +15,15 @@ class CreateForm extends Form
     public $bio = '';
 
     #[Rule('nullable|string')]
-    public $address = '';
-
-    #[Rule('nullable|string')]
     public $lat = '';
 
     #[Rule('nullable|string')]
     public $long = '';
 
-    #[Rule('required|image|max:1024')]
+    #[Rule('nullable|string')]
+    public $address = '';
+
+    #[Rule('nullable|image|max:1024')]
     public $image = '';
 
     public $newImage = null;

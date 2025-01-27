@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Iinfluencer;
+use App\Models\Influencer;
 use Illuminate\Database\Seeder;
 
-class IinfluencerSeeder extends Seeder
+class InfluencerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Iinfluencer::factory()
+        Influencer::factory()
             ->count(5)
             ->create();
     }

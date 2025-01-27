@@ -178,6 +178,8 @@ return [
                 'placeholder' => 'Image',
             ],
         ],
+        'itemTitle' => 'Influencer',
+        'collectionTitle' => 'Influencers',
     ],
     'iinfluencers' => [
         'inputs' => [

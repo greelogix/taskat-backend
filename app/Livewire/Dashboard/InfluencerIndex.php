@@ -3,10 +3,10 @@
 namespace App\Livewire\Dashboard;
 
 use Livewire\Component;
-use App\Models\Iinfluencer;
+use App\Models\Influencer;
 use Livewire\WithPagination;
 
-class IinfluencerIndex extends Component
+class InfluencerIndex extends Component
 {
     use WithPagination;
 
@@ -17,7 +17,7 @@ class IinfluencerIndex extends Component
     public $queryString = ['search', 'sortField', 'sortDirection'];
 
     public $confirmingDeletion = false;
-    public $deletingIinfluencer;
+    public $deletingInfluencer;
 
     public function updatingSearch()
     {
@@ -26,14 +26,14 @@ class IinfluencerIndex extends Component
 
     public function confirmDeletion(string $id)
     {
-        $this->deletingIinfluencer = $id;
+        $this->deletingInfluencer = $id;
 
         $this->confirmingDeletion = true;
     }
 
-    public function delete(Iinfluencer $iinfluencer)
+    public function delete(Influencer $influencer)
     {
-        $iinfluencer->delete();
+        $influencer->delete();
 
         $this->confirmingDeletion = false;
     }
@@ -57,15 +57,15 @@ class IinfluencerIndex extends Component
 
     public function getRowsQueryProperty()
     {
-        return Iinfluencer::query()
+        return Influencer::query()
             ->orderBy($this->sortField, $this->sortDirection)
             ->where('name', 'like', "%{$this->search}%");
     }
 
     public function render()
     {
-        return view('livewire.dashboard.iinfluencers.index', [
-            'iinfluencers' => $this->rows,
+        return view('livewire.dashboard.influencers.index', [
+            'influencers' => $this->rows,
         ]);
     }
 }

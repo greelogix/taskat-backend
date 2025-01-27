@@ -22,7 +22,7 @@
             wire:navigate
             href="{{ route('dashboard.sub-service-templates.create') }}"
         >
-            <x-ui.button>New</x-ui.button>
+            <x-ui.button style="background: #033F9D !important;">Add</x-ui.button>
         </a>
         @endcan
     </div>
@@ -116,12 +116,12 @@
                         <x-ui.action
                             wire:navigate
                             href="{{ route('dashboard.sub-service-templates.edit', $subServiceTemplate) }}"
-                            >Edit</x-ui.action
+                            ><i class="fa-sharp fa-solid fa-pen"></i></x-ui.action
                         >
                         @endcan @can('delete', $subServiceTemplate)
                         <x-ui.action.danger
                             wire:click="confirmDeletion({{ $subServiceTemplate->id }})"
-                            >Delete</x-ui.action.danger
+                            ><i class="fa-sharp fa-solid fa-trash"></i></x-ui.action.danger
                         >
                         @endcan
                     </x-ui.table.action-column>

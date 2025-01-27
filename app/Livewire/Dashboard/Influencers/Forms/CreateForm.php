@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Dashboard\Iinfluencers\Forms;
+namespace App\Livewire\Dashboard\Influencers\Forms;
 
 use Livewire\Form;
-use App\Models\Iinfluencer;
+use App\Models\Influencer;
 use Livewire\Attributes\Rule;
 
 class CreateForm extends Form
@@ -15,13 +15,13 @@ class CreateForm extends Form
     public $bio = '';
 
     #[Rule('nullable|string')]
-    public $address = '';
-
-    #[Rule('nullable|string')]
     public $lat = '';
 
     #[Rule('nullable|string')]
     public $long = '';
+
+    #[Rule('nullable|string')]
+    public $address = '';
 
     #[Rule('nullable|image|max:1024')]
     public $image = '';
@@ -34,11 +34,11 @@ class CreateForm extends Form
 
         $this->processImage();
 
-        $iinfluencer = Iinfluencer::create($this->except(['newImage']));
+        $influencer = Influencer::create($this->except(['newImage']));
 
         $this->reset();
 
-        return $iinfluencer;
+        return $influencer;
     }
 
     public function processImage()
@@ -47,7 +47,7 @@ class CreateForm extends Form
             return;
         }
 
-        $this->image = $this->newImage->store('iinfluencers', 'public');
+        $this->image = $this->newImage->store('influencers', 'public');
     }
 
     public function deleteImage()

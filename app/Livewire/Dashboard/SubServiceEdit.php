@@ -5,11 +5,14 @@ namespace App\Livewire\Dashboard;
 use Livewire\Component;
 use App\Models\Service;
 use App\Models\SubService;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Collection;
 use App\Livewire\Dashboard\SubServices\Forms\UpdateForm;
 
 class SubServiceEdit extends Component
 {
+    use WithFileUploads;
+
     public ?SubService $subService = null;
 
     public UpdateForm $form;

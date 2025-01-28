@@ -14,14 +14,13 @@ new class extends Component
 
         $this->redirect('/', navigate: true); } }; ?>
 
+<div class="flex">
 <style>
 .active {
  font-weight: bold;
  background:#f7fafc;
 }
 </style>
-
-<div class="flex">
     <!-- Sidebar -->
     <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="position: absolute; top: 65px; background: white; height: 93%; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);">
         <!-- Sidebar Content -->

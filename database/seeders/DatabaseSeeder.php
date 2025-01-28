@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'name'=>'admin',
                 'email' => 'admin@admin.com',
-                'password' => \Hash::make('admin'),
+                'password' => Hash::make('admin'),
             ]);
 
         // $this->call(ServiceSeeder::class);

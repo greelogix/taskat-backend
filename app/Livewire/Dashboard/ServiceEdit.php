@@ -28,10 +28,8 @@ class ServiceEdit extends Component
 
     public function save()
     {
-       
         $this->authorize('update', $this->service);
         $this->validate();
-
         $this->form->save();
 
         $this->dispatch('saved');

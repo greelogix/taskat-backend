@@ -181,34 +181,4 @@ return [
         'itemTitle' => 'Influencer',
         'collectionTitle' => 'Influencers',
     ],
-    'iinfluencers' => [
-        'inputs' => [
-            'name' => [
-                'label' => 'Name',
-                'placeholder' => 'Name',
-            ],
-            'bio' => [
-                'label' => 'Bio',
-                'placeholder' => 'Bio',
-            ],
-            'address' => [
-                'label' => 'Address',
-                'placeholder' => 'Address',
-            ],
-            'image' => [
-                'label' => 'Image',
-                'placeholder' => 'Image',
-            ],
-            'lat' => [
-                'label' => 'Lat',
-                'placeholder' => 'Lat',
-            ],
-            'long' => [
-                'label' => 'Long',
-                'placeholder' => 'Long',
-            ],
-        ],
-        'itemTitle' => 'Iinfluencer',
-        'collectionTitle' => 'Iinfluencers',
-    ],
 ];

@@ -23,6 +23,9 @@ new class extends Component
 </style>
     <!-- Sidebar -->
       <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="top: 65px; background: white; height: 93%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); position: fixed; z-index: 1;">
+    <!-- Sidebar -->
+    <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="top: 65px; background: white; height: 93%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); position: fixed; z-index: 1;">
+
         <!-- Sidebar Content -->
         <div class="ml-3 col-12">
             <div class="w-64 text-white p-4">
@@ -33,7 +36,6 @@ new class extends Component
                         <span class="me-3 font-larger"><i class="fa fa-cogs text-black"></i> </span>{{ __('navigation.services') }}
                     </x-dropdown-link>
                     @endcan
-                
                     <!-- Sub-Services -->
                     @can('view-any', App\Models\SubService::class)
                     <x-dropdown-link wire:navigate href="{{ route('dashboard.sub-services.index') }}" class="text-sm font-sans font-medium {{ request()->routeIs('dashboard.sub-services.index') ? 'active' : '' }}">
@@ -174,14 +176,12 @@ new class extends Component
                         <span class="me-3 font-larger"><i class="fa fa-user-circle text-black"></i> </span>{{ __('navigation.influencers') }}
                     </x-dropdown-link>
                     @endcan
-                            <x-responsive-nav-link :href="route('profile')" wire:navigate>{{ __('Profile') }}</x-responsive-nav-link>
-                            <!-- Authentication -->
-                            <button wire:click="logout" class="w-full text-start">
-                                <x-responsive-nav-link>{{ __('Log Out') }}</x-responsive-nav-link>
-                            </button>
-                        </div>
+                    <x-responsive-nav-link :href="route('profile')" wire:navigate>{{ __('Profile') }}</x-responsive-nav-link>
+                    <!-- Authentication -->
+                    <button wire:click="logout" class="w-full text-start">
+                        <x-responsive-nav-link>{{ __('Log Out') }}</x-responsive-nav-link>
+                    </button>
                     </div>
-
                 </div>
             </div>
         </nav>
@@ -193,5 +193,3 @@ new class extends Component
         </div>
     </div>
 </div>
-
-

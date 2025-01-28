@@ -10,5 +10,4 @@ return [
     'all_delivery_days' => 'All Delivery Days',
     'content_categories' => 'Content Categories',
     'influencers' => 'Influencers',
-    'iinfluencers' => 'Iinfluencers',
 ];

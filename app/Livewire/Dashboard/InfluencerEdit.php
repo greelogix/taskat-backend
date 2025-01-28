@@ -4,13 +4,14 @@ namespace App\Livewire\Dashboard;
 
 use Livewire\Component;
 use App\Models\Influencer;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Collection;
 use Livewire\WithPagination;
 use App\Livewire\Dashboard\Influencers\Forms\UpdateForm;
 
 class InfluencerEdit extends Component
 {
-    use WithPagination;
+    use WithPagination, WithFileUploads;
 
     public ?Influencer $influencer = null;
 
@@ -30,7 +31,7 @@ class InfluencerEdit extends Component
         $this->authorize('update', $this->influencer);
 
         $this->validate();
-
+        
         $this->form->save();
 
         $this->dispatch('saved');

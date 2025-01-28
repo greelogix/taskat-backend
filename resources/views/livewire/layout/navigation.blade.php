@@ -22,7 +22,7 @@ new class extends Component
 }
 </style>
     <!-- Sidebar -->
-    <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="position: absolute; top: 65px; background: white; height: 93%; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);">
+      <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="top: 65px; background: white; height: 93%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); position: fixed; z-index: 1;">
         <!-- Sidebar Content -->
         <div class="ml-3 col-12">
             <div class="w-64 text-white p-4">
@@ -76,7 +76,7 @@ new class extends Component
     </div>
     <!-- Main Content -->
     <div class="flex-1">
-        <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style=" box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);">
+        <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style=" box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); position: fixed; width: 100%;">
             <!-- Primary Navigation Menu -->
             <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 logo-res" style="padding-left: 60px">
                 <div class="flex justify-between h-16">

@@ -23,9 +23,6 @@ new class extends Component
 </style>
     <!-- Sidebar -->
       <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="top: 65px; background: white; height: 93%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); position: fixed; z-index: 1;">
-    <!-- Sidebar -->
-    <div class="w-64 text-white p-2 bg-grey absolute top-16 hide-on-small" style="top: 65px; background: white; height: 93%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); position: fixed; z-index: 1;">
-
         <!-- Sidebar Content -->
         <div class="ml-3 col-12">
             <div class="w-64 text-white p-4">

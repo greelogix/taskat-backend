@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,28 @@ Route::name('api.')
             'api.login'
         );
 
-        Route::middleware('auth:sanctum')->group(function () {});
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::get('/bookings', [BookingController::class, 'index'])->name(
+                'bookings.index'
+            );
+
+            Route::post('/bookings', [BookingController::class, 'store'])->name(
+                'bookings.store'
+            );
+
+            Route::get('/bookings/{booking}', [
+                BookingController::class,
+                'show',
+            ])->name('bookings.show');
+
+            Route::put('/bookings/{booking}', [
+                BookingController::class,
+                'update',
+            ])->name('bookings.update');
+
+            Route::delete('/bookings/{booking}', [
+                BookingController::class,
+                'destroy',
+            ])->name('bookings.destroy');
+        });
     });

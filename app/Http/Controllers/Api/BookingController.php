@@ -19,7 +19,7 @@ class BookingController extends Controller
     public function index()
     {
         try {
-            $services = Service::with(['subServices.subServiceTemplates'])->get();
+            $services = Service::with(['subServices.subServiceTemplates','subServices.deliveryDates'])->get();
             return response()->json($services);
         } catch (\Exception $e) {
             return response()->json([

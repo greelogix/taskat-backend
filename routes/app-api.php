@@ -24,9 +24,13 @@ Route::name('api.')
         );
 
         Route::middleware('auth:sanctum')->group(function () {
-            Route::get('/bookings', [BookingController::class, 'index'])->name(
-                'bookings.index'
+            Route::get('/services', [BookingController::class, 'index'])->name(
+                'services.index'
             );
+
+            // Route::get('/bookings', [BookingController::class, 'index'])->name(
+            //     'bookings.index'
+            // );
 
             Route::post('/bookings', [BookingController::class, 'store'])->name(
                 'bookings.store'

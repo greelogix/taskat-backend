@@ -10,29 +10,43 @@ use App\Http\Resources\BookingResource;
 use App\Http\Resources\BookingCollection;
 use App\Http\Requests\BookingStoreRequest;
 use App\Http\Requests\BookingUpdateRequest;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 
 class BookingController extends Controller
 {
-    public function index(Request $request): BookingCollection
+    public function index()
     {
         try {
-            $search = $request->get('search', '');
-
-            $bookings = $this->getSearchQuery($search)
-                ->latest()
-                ->paginate();
-
-            return new BookingCollection($bookings);
-
+            $services = Service::with(['subServices.subServiceTemplates'])->get();
+            return response()->json($services);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Error fetching bookings.',
+                'message' => 'Error fetching services.',
                 'error' => $e->getMessage(),
             ], 500);
         }
     }
+    
+    // public function index(Request $request): BookingCollection
+    // {
+    //     try {
+    //         $search = $request->get('search', '');
+
+    //         $bookings = $this->getSearchQuery($search)
+    //             ->latest()
+    //             ->paginate();
+
+    //         return new BookingCollection($bookings);
+
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'message' => 'Error fetching bookings.',
+    //             'error' => $e->getMessage(),
+    //         ], 500);
+    //     }
+    // }
 
     public function store(BookingStoreRequest $request): BookingResource
     {

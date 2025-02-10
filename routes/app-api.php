@@ -22,8 +22,10 @@ Route::name('api.')
         Route::post('/login', [AuthController::class, 'login'])->name(
             'api.login'
         );
+        
 
         Route::middleware('auth:sanctum')->group(function () {
+
             Route::get('/services', [BookingController::class, 'index'])->name(
                 'services.index'
             );

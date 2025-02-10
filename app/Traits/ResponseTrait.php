@@ -9,7 +9,6 @@ trait ResponseTrait
      */
     protected function successResponse($data = [], $message = 'Success', $status = 200)
     {
-        dd('test');
         return response()->json([
             'success' => true,
             'message' => $message,

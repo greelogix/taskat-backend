@@ -21,15 +21,12 @@ class UpdateForm extends Form
     public function rules(): array
     {
         return [
-            'title' => [
-                'required',
-                'string',
-                Rule::unique('services', 'title')->ignore($this->service),
-            ],
+            'title' => ['required', 'string', Rule::unique('services', 'title')->ignore($this->service)],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'newImage' => ['nullable', 'image', 'max:1024'], // Correct rule for new image
         ];
     }
+    
 
     public function setService(Service $service)
     {
@@ -43,23 +40,31 @@ class UpdateForm extends Form
     public function save()
     {
         $this->validate();
-
+    
         $this->processImage();
-
-        $this->service->update($this->except(['service', 'newImage']));
+    
+        $this->service->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => $this->image,
+        ]);
+    
+        $this->reset('newImage');
     }
-
+    
     public function processImage()
     {
-        if (empty($this->newImage)) {
-            return;
+        if ($this->newImage) {
+            $this->image = $this->newImage->store('services', 'public');
+            $this->service->update(['image' => $this->image]);
         }
-
-        $this->service->image = $this->newImage->store('services', 'public');
     }
-
+    
     public function deleteImage()
     {
         $this->newImage = null;
+        $this->image = null;
+        $this->service->update(['image' => null]);
     }
+    
 }

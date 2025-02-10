@@ -46,8 +46,16 @@ class UpdateForm extends Form
     {
         $this->validate();
 
-        $this->deliveryDays->update(
-            $this->except(['deliveryDays', 'sub_service_id'])
-        );
+        // $this->deliveryDays->update(
+        //     $this->except(['deliveryDays', 'sub_service_id'])
+        // );
+
+        $this->deliveryDays->update([
+            'sub_service_id' => $this->sub_service_id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'status' => $this->status,
+        ]);
     }
 }

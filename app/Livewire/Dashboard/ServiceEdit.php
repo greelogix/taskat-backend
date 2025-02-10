@@ -7,6 +7,7 @@ use App\Models\Service;
 use Illuminate\Support\Collection;
 use Livewire\WithFileUploads;
 use App\Livewire\Dashboard\Services\Forms\UpdateForm;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceEdit extends Component
 {
@@ -33,6 +34,15 @@ class ServiceEdit extends Component
         $this->form->save();
 
         $this->dispatch('saved');
+    }
+
+    public function deleteImage()
+    {
+        if ($this->service->image) {
+            Storage::delete($this->service->image);
+            $this->service->image = null;
+            $this->service->save();
+        }
     }
 
     public function render()

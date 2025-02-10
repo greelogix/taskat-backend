@@ -4,6 +4,7 @@ namespace App\Livewire\Dashboard\Influencers\Forms;
 
 use Livewire\Form;
 use App\Models\Influencer;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UpdateForm extends Form
@@ -32,7 +33,7 @@ class UpdateForm extends Form
             'lat' => ['nullable', 'string'],
             'long' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'newImage' => ['nullable', 'image', 'max:1024'],
         ];
     }
 
@@ -51,26 +52,63 @@ class UpdateForm extends Form
     public function save()
     {
         $this->validate();
-
-        $this->processImage();
-
-        $this->influencer->update($this->except(['influencer', 'newImage']));
+    
+        if ($this->newImage) {
+            $this->processImage();
+        }
+    
+        $this->influencer->update([
+            'name' => $this->name,
+            'bio' => $this->bio,
+            'lat' => $this->lat,
+            'long' => $this->long,
+            'address' => $this->address,
+            'image' => $this->image,
+        ]);
+    
+        $this->reset('newImage');
     }
 
     public function processImage()
     {
-        if (empty($this->newImage)) {
-            return;
+        if ($this->newImage) {
+            $this->image = $this->newImage->store('influencers', 'public');
+            $this->influencer->update(['image' => $this->image]);
         }
-
-        $this->influencer->image = $this->newImage->store(
-            'influencers',
-            'public'
-        );
     }
 
+    // public function save()
+    // {
+    //     $this->validate();
+
+    //     $this->processImage();
+
+    //     $this->influencer->update($this->except(['influencer', 'newImage']));
+    // }
+
+    // public function processImage()
+    // {
+    //     if (empty($this->newImage)) {
+    //         return;
+    //     }
+
+    //     $this->influencer->image = $this->newImage->store(
+    //         'influencers',
+    //         'public'
+    //     );
+    // }
+
+    // public function deleteImage()
+    // {
+    //     $this->newImage = null;
+    // }
     public function deleteImage()
     {
+        if ($this->image) {
+            Storage::disk('public')->delete($this->image); 
+        }
         $this->newImage = null;
+        $this->image = null;
+        $this->influencer->update(['image' => null]);
     }
 }

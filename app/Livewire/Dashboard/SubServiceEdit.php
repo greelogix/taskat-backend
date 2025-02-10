@@ -8,6 +8,7 @@ use App\Models\SubService;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Collection;
 use App\Livewire\Dashboard\SubServices\Forms\UpdateForm;
+use Illuminate\Support\Facades\Storage;
 
 class SubServiceEdit extends Component
 {
@@ -39,6 +40,12 @@ class SubServiceEdit extends Component
         $this->dispatch('saved');
     }
 
+    public function deleteImage()
+    {
+        $this->form->deleteImage();
+        $this->dispatch('imageDeleted');
+    }
+    
     public function render()
     {
         return view('livewire.dashboard.sub-services.edit', []);

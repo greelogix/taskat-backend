@@ -4,6 +4,7 @@ namespace App\Livewire\Dashboard\SubServices\Forms;
 
 use Livewire\Form;
 use App\Models\SubService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UpdateForm extends Form
@@ -30,7 +31,7 @@ class UpdateForm extends Form
             'service_id' => ['required'],
             'name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'newImage' => ['nullable', 'image', 'max:1024'],
             'status' => ['nullable'],
             'price' => ['required'],
         ];
@@ -51,28 +52,39 @@ class UpdateForm extends Form
     public function save()
     {
         $this->validate();
-
-        $this->processImage();
-
-        $this->subService->update(
-            $this->except(['subService', 'service_id', 'newImage'])
-        );
+    
+        if ($this->newImage) {
+            $this->processImage();
+        }
+    
+        $this->subService->update([
+            'service_id' => $this->service_id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'status' => $this->status,
+            'price' => $this->price,
+            'image' => $this->image,
+        ]);
+    
+        $this->reset('newImage');
     }
+    
 
     public function processImage()
     {
-        if (empty($this->newImage)) {
-            return;
+        if ($this->newImage) {
+            $this->image = $this->newImage->store('services', 'public');
+            $this->subService->update(['image' => $this->image]);
         }
-
-        $this->subService->image = $this->newImage->store(
-            'sub_services',
-            'public'
-        );
     }
 
     public function deleteImage()
     {
+        if ($this->image) {
+            Storage::disk('public')->delete($this->image); 
+        }
         $this->newImage = null;
+        $this->image = null;
+        $this->subService->update(['image' => null]);
     }
 }

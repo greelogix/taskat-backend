@@ -5,6 +5,7 @@ namespace App\Livewire\Dashboard\SubServiceTemplates\Forms;
 use Livewire\Form;
 use Illuminate\Validation\Rule;
 use App\Models\SubServiceTemplate;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateForm extends Form
 {
@@ -30,7 +31,7 @@ class UpdateForm extends Form
             'sub_service_id' => ['required'],
             'name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'newImage' => ['nullable', 'image', 'max:1024'],
             'url' => ['nullable', 'url'],
             'status' => ['required'],
         ];
@@ -52,28 +53,38 @@ class UpdateForm extends Form
     public function save()
     {
         $this->validate();
-
-        $this->processImage();
-
-        $this->subServiceTemplate->update(
-            $this->except(['subServiceTemplate', 'sub_service_id', 'newImage'])
-        );
+    
+        if ($this->newImage) {
+            $this->processImage();
+        }
+    
+        $this->subServiceTemplate->update([
+            'sub_service_id' => $this->sub_service_id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'image' => $this->image,
+            'url' =>$this->url,
+            'status' => $this->status,
+        ]);
+    
+        $this->reset('newImage');
     }
 
     public function processImage()
     {
-        if (empty($this->newImage)) {
-            return;
+        if ($this->newImage) {
+            $this->image = $this->newImage->store('sub_service_templates', 'public');
+            $this->subServiceTemplate->update(['image' => $this->image]);
         }
-
-        $this->subServiceTemplate->image = $this->newImage->store(
-            'sub_service_templates',
-            'public'
-        );
     }
-
+    
     public function deleteImage()
     {
+        if ($this->image) {
+            Storage::disk('public')->delete($this->image); 
+        }
         $this->newImage = null;
+        $this->image = null;
+        $this->subServiceTemplate->update(['image' => null]);
     }
 }

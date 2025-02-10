@@ -36,6 +36,12 @@ class InfluencerEdit extends Component
 
         $this->dispatch('saved');
     }
+    
+    public function deleteImage()
+    {
+        $this->form->deleteImage();
+        $this->dispatch('imageDeleted');
+    }
 
     public function render()
     {

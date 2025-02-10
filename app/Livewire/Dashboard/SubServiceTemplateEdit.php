@@ -5,11 +5,14 @@ namespace App\Livewire\Dashboard;
 use Livewire\Component;
 use App\Models\SubService;
 use App\Models\SubServiceTemplate;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Collection;
 use App\Livewire\Dashboard\SubServiceTemplates\Forms\UpdateForm;
 
 class SubServiceTemplateEdit extends Component
 {
+    use WithFileUploads;
+
     public ?SubServiceTemplate $subServiceTemplate = null;
 
     public UpdateForm $form;
@@ -34,6 +37,12 @@ class SubServiceTemplateEdit extends Component
         $this->form->save();
 
         $this->dispatch('saved');
+    }
+    
+    public function deleteImage()
+    {
+        $this->form->deleteImage();
+        $this->dispatch('imageDeleted');
     }
 
     public function render()

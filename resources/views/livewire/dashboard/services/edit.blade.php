@@ -59,13 +59,13 @@
                         }}</x-ui.label
                     >
                     <x-ui.input.image
-                        :src="$form->newImage ? Storage::url($form->newImage) : Storage::url($form->image)"
-                        wire:model="form.newImage"
-                        x-on:removed="$form->deleteImage()"
-                        class="w-full"
-                        id="image"
-                        name="image"
-                    />
+                    :src="$form->newImage ? Storage::url($form->newImage) : ($form->image ? Storage::url($form->image) : '')"
+                    wire:model="form.newImage"
+                    x-on:removed="$wire.deleteImage()"
+                    class="w-full"
+                    id="image"
+                    name="image"
+                />  
                     <x-ui.input.error for="form.newImage" />
                 </div>
             </div>

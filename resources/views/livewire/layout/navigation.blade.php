@@ -67,6 +67,11 @@ new class extends Component
                         <span class="me-3 font-larger"><i class="fa fa-user-circle text-black"></i> </span>{{ __('navigation.influencers') }}
                     </x-dropdown-link>
                     @endcan
+                     <!-- Chat -->
+                     <x-dropdown-link wire:navigate href="{{ route('laraguppy.messenger') }}" class="text-sm font-sans font-medium {{ request()->routeIs('laraguppy.messenger') ? 'active' : '' }}">
+                        <span class="me-3 font-larger"><i class="fa fa-comments text-black"></i></span> Chat
+                    </x-dropdown-link>
+                    
                 </div>
                 
             </div>
